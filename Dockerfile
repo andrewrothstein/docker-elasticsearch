@@ -22,7 +22,7 @@ EXPOSE 9300
 VOLUME ["/es-index-data"]
 RUN sed -r -i "s/# (path.data: ).*/\1=\/es-index-data/g" /opt/elasticsearch/config/elasticsearch.yml
 
-RUN ["/opt/elasticsearch/bin/plugin", "-install", "elasticsearch/elasticsearch-cloud-aws/2.0.0.RC1"]
+RUN ["/opt/elasticsearch/bin/plugin", "-install", "elasticsearch/elasticsearch-cloud-aws/2.1.1"]
 
 # Define an entry point.
 ENTRYPOINT ["/opt/elasticsearch/bin/elasticsearch"]
