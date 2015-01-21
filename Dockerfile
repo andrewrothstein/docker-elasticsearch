@@ -23,6 +23,10 @@ VOLUME ["/data"]
 # Mount elasticsearch.yml config
 ADD config/elasticsearch.yml /elasticsearch/config/elasticsearch.yml
 
+# Install plugins...
+RUN ["/elasticsearch/bin/plugin", "-i", "elasticsearch/elasticsearch-cloud-aws/2.4.1"]
+RUN ["/elasticsearch/bin/plugin", "-l"]
+
 # Define working directory.
 WORKDIR /data
 
