@@ -7,15 +7,18 @@
 # Pull base image.
 FROM dockerfile/java:oracle-java7
 
-ENV ES_PKG_NAME elasticsearch-1.4.2
+ENV ES_VER 1.5.2
+ENV ES_CLOUD_AWS_VER 2.5.0
+
+ENV ES_PKG_NAME elasticsearch-${ES_VER}
 
 # Install ElasticSearch.
 RUN \
   cd / && \
-  wget https://download.elasticsearch.org/elasticsearch/elasticsearch/$ES_PKG_NAME.tar.gz && \
-  tar xvzf $ES_PKG_NAME.tar.gz && \
-  rm -f $ES_PKG_NAME.tar.gz && \
-  mv /$ES_PKG_NAME /elasticsearch
+  wget https://download.elasticsearch.org/elasticsearch/elasticsearch/${ES_PKG_NAME}.tar.gz && \
+  tar xvzf ${ES_PKG_NAME}.tar.gz && \
+  rm -f ${ES_PKG_NAME}.tar.gz && \
+  mv /${ES_PKG_NAME} /elasticsearch
 
 # Define mountable directories.
 VOLUME ["/data"]
@@ -24,7 +27,7 @@ VOLUME ["/data"]
 ADD config/elasticsearch.yml /elasticsearch/config/elasticsearch.yml
 
 # Install plugins...
-RUN ["/elasticsearch/bin/plugin", "-i", "elasticsearch/elasticsearch-cloud-aws/2.4.1"]
+RUN /elasticsearch/bin/plugin -i elasticsearch/elasticsearch-cloud-aws/${ES_CLOUD_AWS_VER}
 RUN ["/elasticsearch/bin/plugin", "-l"]
 
 # Define working directory.
