@@ -5,7 +5,7 @@
 #
 
 # Pull base image.
-FROM dockerfile/java:oracle-java7
+FROM docker.io/java:openjdk-7-jdk
 
 ENV ES_VER 1.5.2
 ENV ES_CLOUD_AWS_VER 2.5.0
@@ -39,5 +39,4 @@ CMD ["/elasticsearch/bin/elasticsearch"]
 # Expose ports.
 #   - 9200: HTTP
 #   - 9300: transport
-EXPOSE 9200
-EXPOSE 9300
+EXPOSE 9200 9300
