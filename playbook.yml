@@ -1,0 +1,8 @@
+---
+- hosts: all
+  roles:
+    - role: andrewrothstein.elasticsearch
+    - role: andrewrothstein.elasticsearch-cluster
+      elasticsearch_cluster_network:
+        host: '0.0.0.0'
+      elasticsearch_cluster_activate: False
