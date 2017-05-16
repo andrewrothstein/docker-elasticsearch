@@ -2,4 +2,6 @@
 - src: andrewrothstein.elasticsearch
   version: v3.0.1
 - src: andrewrothstein.elasticsearch-cluster
+  version: v1.0.1
+- src: andrewrothstein.gosu
   version: v1.0.0
